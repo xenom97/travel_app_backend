@@ -1,1 +1,5 @@
-Travel Web App with MERN Stack
+Travel Web App Backend
+
+- PostgreSql (Sequelize)
+- Express
+- Node
