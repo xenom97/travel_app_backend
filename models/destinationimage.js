@@ -1,10 +1,15 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const DestinationImage = sequelize.define('DestinationImage', {
+  const { Model } = sequelize.Sequelize;
+  class DestinationImage extends Model { }
+
+  DestinationImage.init({
     DestinationId: DataTypes.INTEGER,
     imageURL: DataTypes.STRING
-  }, {});
-  DestinationImage.associate = function(models) {
+  }, {
+    sequelize
+  })
+  DestinationImage.associate = function (models) {
     // associations can be defined here
   };
   return DestinationImage;
