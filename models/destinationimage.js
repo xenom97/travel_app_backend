@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
   })
   DestinationImage.associate = function (models) {
     // associations can be defined here
+    DestinationImage.belongsTo(models.Destination, {
+      foreignKey: 'DestinationId'
+    });
   };
   return DestinationImage;
 };

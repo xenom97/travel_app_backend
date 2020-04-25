@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
   })
   Destination.associate = function (models) {
     // associations can be defined here
+    Destination.hasMany(models.DestinationImage, {
+      foreignKey: 'DestinationId'
+    });
   };
   return Destination;
 };

@@ -46,7 +46,7 @@ API Documentation<br>
     **content**
 
     ```json
-    { "msg": { "error": [string] } }
+    { "errors": [string] }
     ```
 
   - ("/login")
@@ -80,5 +80,38 @@ API Documentation<br>
     **content**
 
     ```json
-    { "msg": { "error": [string] } }
+    { "errors": [string] }
+    ```
+
+- ("/destinations")
+
+  - ("/") <br>
+    **Method**
+    `GET`<br>
+    **Params**<br>
+    `none`<br>
+    **Query (req.query)**<br>
+    `none`<br>
+    **Data (req.body)**<br>
+    `none`<br>
+
+    **Success Responses**<br>
+    **code**<br>
+    status = 200
+
+    **content**
+
+    ```json
+    { "msg": { "data": [object] } }
+    ```
+
+    **Error Responses**<br>
+
+    **code**<br>
+    status = 500 (will change later)
+
+    **content**
+
+    ```json
+    { "errors": [string] }
     ```

@@ -12,7 +12,11 @@ module.exports = (sequelize, DataTypes) => {
             throw new Error("incorrect username/password");
           }
           const compare = await bcrypt.compare(password, admin.password);
-          if (compare) return { username: admin.username }
+          if (compare) return {
+            id: admin.id,
+            username: admin.username,
+            type: 'admin'
+          }
           throw new Error("incorrect username/password");
         }
         catch (err) {
