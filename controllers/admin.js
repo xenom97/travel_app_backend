@@ -7,10 +7,15 @@ const controller = {
     if (password !== confirmPassword) return next("password not match");
     try {
       const newAdmin = await Admin.create({ username, password });
-      const msg = {
+      const result = {
         username: newAdmin.username
       }
-      res.status(201).json({ msg });
+      res.status(201).json({
+        success: true,
+        code: 201,
+        message: "Register Success",
+        result
+      });
     }
     catch (err) {
       next(err)
@@ -21,11 +26,15 @@ const controller = {
     const { username, password } = req.body;
     try {
       const admin = await Admin.login(username, password);
-      const token = jwt.sign(admin, process.env.JWT_SECRET, {
+      const result = jwt.sign(admin, process.env.JWT_SECRET, {
         expiresIn: '12h'
       });
-      const msg = { token }
-      res.status(200).json({ msg })
+      res.status(200).json({
+        success: true,
+        code: 200,
+        message: "Login Success",
+        result
+      })
     }
     catch (err) {
       next(err)

@@ -35,7 +35,12 @@ API Documentation<br>
     **content**
 
     ```json
-    { "msg": { "username": [string] } }
+    {
+    	"success": true,
+    	"code": 201,
+    	"message": "Register Success",
+    	"result": Username[string]
+    }
     ```
 
     **Error Responses**<br>
@@ -46,7 +51,12 @@ API Documentation<br>
     **content**
 
     ```json
-    { "errors": [string] }
+    {
+    	"success": false,
+    	"code": 500,
+    	"message": [string],
+    	"result": []
+    }
     ```
 
   - ("/login")
@@ -69,7 +79,12 @@ API Documentation<br>
     **content**
 
     ```json
-    { "msg": { "token": [string] } }
+    {
+    	"success": true,
+    	"code": 200,
+    	"message": "Login Success",
+    	"result": JWT_TOKEN[string]
+    }
     ```
 
     **Error Responses**<br>
@@ -80,7 +95,12 @@ API Documentation<br>
     **content**
 
     ```json
-    { "errors": [string] }
+    {
+    	"success": false,
+    	"code": 500,
+    	"message": [string],
+    	"result": []
+    }
     ```
 
 - ("/destinations")
@@ -102,7 +122,12 @@ API Documentation<br>
     **content**
 
     ```json
-    { "msg": { "data": [object] } }
+    {
+    	"success": true,
+    	"code": 200,
+    	"message": "Login Success",
+    	"result": destinations[array]
+    }
     ```
 
     **Error Responses**<br>
@@ -113,5 +138,10 @@ API Documentation<br>
     **content**
 
     ```json
-    { "errors": [string] }
+    {
+    	"success": false,
+    	"code": 500,
+    	"message": [string],
+    	"result": []
+    }
     ```
