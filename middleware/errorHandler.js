@@ -5,10 +5,6 @@ module.exports = (err, req, res, next) => {
   const success = false;
   switch (err.name) {
     case 'SequelizeValidationError':
-      code = 400;
-      message = err.name;
-      err.errors.forEach(e => result.push(e.message));
-      break;
     case 'SequelizeUniqueConstraintError':
       code = 400;
       message = err.name;
@@ -18,15 +14,10 @@ module.exports = (err, req, res, next) => {
       code = 400;
       message = err.parent.detail;
       break;
-    case 'JsonWebTokenError':
-      code = 401;
-      break;
-    case 'REGISTER_FAILED':
-      code = 400;
-      break;
     case 'LOGIN_FAILED':
       code = 400;
       break;
+    case 'JsonWebTokenError':
     case 'TokenExpiredError':
       code = 401;
       break;
