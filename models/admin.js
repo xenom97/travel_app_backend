@@ -37,19 +37,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         isUnique: async (username) => {
-          const error = {
-            name: "REGISTER_FAILED",
-            message: "username already exists"
-          };
           try {
             const exist = await Admin.findOne({ where: { username } });
             if (exist) {
-              throw new CustomError(error);
+              throw new Error("username already exists");
             }
           }
           catch (err) {
-            error.message = err.message;
-            throw new CustomError(error);
+            throw new Error(err.message);
           }
         }
       }
