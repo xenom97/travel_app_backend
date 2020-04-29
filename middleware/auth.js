@@ -4,9 +4,9 @@ const { Admin } = require("../models");
 module.exports = {
   authentication: async (req, res, next) => {
     const { authorization } = req.headers;
-    if (!authorization) return next('token must be provided');
+    const token = authorization || "Bearer ";
     try {
-      const data = jwt.verify(authorization.split(" ")[1], process.env.JWT_SECRET);
+      const data = jwt.verify(token.split(" ")[1], process.env.JWT_SECRET);
       if (data.type === 'admin') {
         const admin = await Admin.findByPk(data.id);
         if (admin) return next();
