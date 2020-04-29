@@ -5,8 +5,8 @@ module.exports = {
   authentication: async (req, res, next) => {
     const { authorization } = req.headers;
     if (!authorization) return next('token must be provided');
-    const data = jwt.verify(authorization.split(" ")[1], process.env.JWT_SECRET);
     try {
+      const data = jwt.verify(authorization.split(" ")[1], process.env.JWT_SECRET);
       if (data.type === 'admin') {
         const admin = await Admin.findByPk(data.id);
         if (admin) return next();

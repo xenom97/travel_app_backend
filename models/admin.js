@@ -1,15 +1,20 @@
 'use strict';
 const bcrypt = require("bcrypt");
+const CustomError = require("../helper/customError");
 
 module.exports = (sequelize, DataTypes) => {
   const { Model } = sequelize.Sequelize;
   class Admin extends Model {
     static login(username, password) {
       return (async () => {
+        const error = {
+          name: "LOGIN_FAILED",
+          message: "incorrect username/password"
+        };
         try {
           const admin = await Admin.findOne({ where: { username } });
           if (!admin) {
-            throw new Error("incorrect username/password");
+            throw new CustomError(error);
           }
           const compare = await bcrypt.compare(password, admin.password);
           if (compare) return {
@@ -17,10 +22,11 @@ module.exports = (sequelize, DataTypes) => {
             username: admin.username,
             type: 'admin'
           }
-          throw new Error("incorrect username/password");
+          throw new CustomError(error);
         }
         catch (err) {
-          throw new Error(err.message)
+          error.message = err.message;
+          throw new CustomError(error);
         }
       })();
     }
@@ -31,14 +37,19 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         isUnique: async (username) => {
+          const error = {
+            name: "REGISTER_FAILED",
+            message: "username already exists"
+          };
           try {
             const exist = await Admin.findOne({ where: { username } });
             if (exist) {
-              throw new Error("username already exists");
+              throw new CustomError(error);
             }
           }
           catch (err) {
-            throw new Error(err.message);
+            error.message = err.message;
+            throw new CustomError(error);
           }
         }
       }

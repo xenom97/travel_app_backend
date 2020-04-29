@@ -46,16 +46,16 @@ API Documentation<br>
     **Error Responses**<br>
 
     **code**<br>
-    status = 500 (will change later)
+    status = 400 (will change later)
 
     **content**
 
     ```json
     {
     	"success": false,
-    	"code": 500,
-    	"message": [string],
-    	"result": []
+    	"code": 400,
+    	"message": "SequelizeValidationError",
+    	"result": ["username already exists"]
     }
     ```
 
@@ -90,15 +90,15 @@ API Documentation<br>
     **Error Responses**<br>
 
     **code**<br>
-    status = 500 (will change later)
+    status = 400 (will change later)
 
     **content**
 
     ```json
     {
     	"success": false,
-    	"code": 500,
-    	"message": [string],
+    	"code": 400,
+    	"message": "incorrect username/password",
     	"result": []
     }
     ```
@@ -125,7 +125,7 @@ API Documentation<br>
     {
     	"success": true,
     	"code": 200,
-    	"message": "Login Success",
+    	"message": "",
     	"result": destinations[array]
     }
     ```
@@ -133,15 +133,15 @@ API Documentation<br>
     **Error Responses**<br>
 
     **code**<br>
-    status = 500 (will change later)
+    status = 400
 
     **content**
 
     ```json
     {
     	"success": false,
-    	"code": 500,
-    	"message": [string],
+    	"code": 401,
+    	"message": "unauthorized",
     	"result": []
     }
     ```
