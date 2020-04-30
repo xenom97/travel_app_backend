@@ -4,8 +4,34 @@ module.exports = (sequelize, DataTypes) => {
   class DestinationImage extends Model { }
 
   DestinationImage.init({
-    DestinationId: DataTypes.INTEGER,
-    imageURL: DataTypes.STRING
+    DestinationId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: "cannot null"
+        },
+        notEmpty: {
+          args: true,
+          msg: "cannot empty"
+        }
+      }
+    },
+    imageURL: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: "cannot null"
+        },
+        notEmpty: {
+          args: true,
+          msg: "cannot empty"
+        }
+      }
+    }
   }, {
     sequelize
   })

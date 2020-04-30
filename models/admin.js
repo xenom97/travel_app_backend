@@ -35,7 +35,16 @@ module.exports = (sequelize, DataTypes) => {
   Admin.init({
     username: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
+        notNull: {
+          args: true,
+          msg: "cannot null"
+        },
+        notEmpty: {
+          args: true,
+          msg: "cannot empty"
+        },
         isUnique: async (username) => {
           try {
             const exist = await Admin.findOne({ where: { username } });
@@ -49,7 +58,20 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    password: DataTypes.STRING
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: "cannot null"
+        },
+        notEmpty: {
+          args: true,
+          msg: "cannot empty"
+        }
+      }
+    }
   },
     {
       sequelize,

@@ -145,3 +145,58 @@ API Documentation<br>
     	"result": []
     }
     ```
+
+  - ("/create") <br>
+    **Method**
+    `POST`<br>
+    **Params**<br>
+    `none`<br>
+    **Query (req.query)**<br>
+    `none`<br>
+    **Data (req.body)**<br>
+
+    ```json
+    {
+    	"name": "raja ampat",
+    	"description": "bagus kok, asique",
+    	"location": "papua",
+    	"price": 9000000,
+    	"images": [
+    		"www.xxximages.xyz/asakmsw394013/10-w1edo23r-103-1030wkdsj",
+    		"www.xxximages.xyz/yhgb93023lfdep/0-3opekfjgit942e2p-3-o033030"
+    	]
+    }
+    ```
+
+    <br>
+
+    **Success Responses**<br>
+    **code**<br>
+    status = 200
+
+    **content**
+
+    ```json
+    {
+    	"success": true,
+    	"code": 200,
+    	"message": "",
+    	"result": destination
+    }
+    ```
+
+    **Error Responses**<br>
+
+    **code**<br>
+    status = 400
+
+    **content**
+
+    ```json
+    {
+    	"success": false,
+    	"code": 400,
+    	"message": "null value in column \"imageURL\" violates not-null constraint",
+    	"result": []
+    }
+    ```

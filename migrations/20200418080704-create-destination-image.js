@@ -9,6 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       DestinationId: {
+        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'Destinations',
@@ -18,6 +19,7 @@ module.exports = {
         onDelete: 'cascade'
       },
       imageURL: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       createdAt: {

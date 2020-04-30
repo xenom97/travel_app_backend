@@ -14,6 +14,7 @@ module.exports = (err, req, res, next) => {
       code = 400;
       message = err.parent.detail;
       break;
+    case 'SequelizeDatabaseError':
     case 'LOGIN_FAILED':
       code = 400;
       break;
