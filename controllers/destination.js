@@ -1,4 +1,5 @@
 const { Destination, DestinationImage } = require("../models");
+const { uploader } = require("../helper/utils");
 
 const controller = {
   findAll: async (req, res, next) => {
@@ -23,12 +24,12 @@ const controller = {
       name,
       description,
       location,
-      price,
-      images
+      price
     } = req.body;
     try {
       const destination = { name, description, location, price };
-      const result = await Destination.create(destination, { images });
+      const images = await uploader(req);
+      const result = await Destination.create(destination);
       const DestinationId = result.id;
       const destinationImages = images.map(imageURL => ({ imageURL, DestinationId }));
       await DestinationImage.bulkCreate(destinationImages);
@@ -46,7 +47,7 @@ const controller = {
 
   addImages: async (req, res, next) => {
     const { DestinationId } = req.params;
-    const { images } = req.body;
+    const images = await uploader(req);
     const destinationImages = images.map(imageURL => ({ imageURL, DestinationId }));
     try {
       const result = await DestinationImage.bulkCreate(destinationImages);

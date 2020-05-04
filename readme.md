@@ -161,10 +161,7 @@ API Documentation<br>
     	"description": "bagus kok, asique",
     	"location": "papua",
     	"price": 9000000,
-    	"images": [
-    		"www.xxximages.xyz/asakmsw394013/10-w1edo23r-103-1030wkdsj",
-    		"www.xxximages.xyz/yhgb93023lfdep/0-3opekfjgit942e2p-3-o033030"
-    	]
+    	"images": [image1, image2]
     }
     ```
 
@@ -212,10 +209,7 @@ API Documentation<br>
 
     ```json
     {
-    	"images": [
-    		"www.xxximages.xyz/asakmsw394013/10-w1edo23r-103-1030wkdsj",
-    		"www.xxximages.xyz/yhgb93023lfdep/0-3opekfjgit942e2p-3-o033030"
-    	]
+    	"images": [image1, image2]
     }
     ```
 
