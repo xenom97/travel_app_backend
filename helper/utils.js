@@ -26,8 +26,7 @@ module.exports = {
         for (image of images) {
           try {
             const uploaded = await cloudinaryUpload(image);
-            const { url, secure_url } = uploaded;
-            result.push(url);
+            result.push(uploaded);
           }
           catch (err) {
             reject(err);
@@ -39,5 +38,14 @@ module.exports = {
         reject(err);
       }
     });
+  },
+
+  destroyer: (image) => {
+    return new Promise((resolve, reject) => {
+      cloudinary.uploader.destroy(image, (err, res) => {
+        if (err) return reject(err);
+        return resolve(res);
+      });
+    })
   }
 };

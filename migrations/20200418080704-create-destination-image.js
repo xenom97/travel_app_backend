@@ -18,6 +18,10 @@ module.exports = {
         onUpdate: 'cascade',
         onDelete: 'cascade'
       },
+      name: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
       imageURL: {
         allowNull: false,
         type: Sequelize.STRING
