@@ -198,7 +198,7 @@ API Documentation<br>
     }
     ```
 
-  - ("/images/add/:DestinationId") <br>
+  - ("/images/:DestinationId") <br>
     **Method**
     `POST`<br>
     **Params**<br>
@@ -246,7 +246,7 @@ API Documentation<br>
     }
     ```
 
-  - ("/images/delete/:id") <br>
+  - ("/images/:id/:name") <br>
     **Method**
     `DELETE`<br>
     **Params**<br>

@@ -99,7 +99,7 @@ const controller = {
       res.status(200).json({
         success: true,
         code: 200,
-        message: "success delete image",
+        message: "success delete destination",
         result: []
       });
     }
