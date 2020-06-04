@@ -94,7 +94,11 @@ const controller = {
 
   delete: async (req, res, next) => {
     const { id } = req.params;
+    const { names } = req.body;
     try {
+      for (const name of names) {
+        await destroyer(name);
+      }
       await Destination.destroy({ where: { id } });
       res.status(200).json({
         success: true,
